@@ -15,12 +15,18 @@ class Erika:
 		self.readConversionTable()
 		self.ascii_2_ddr = {}
 		self.ddr_2_ascii = {}
+
+	def __enter__(self):
+		self.connection.open()
+
+	def __exit__(self, *args):
+		self.connection.close()
 	
 	def readConversionTable(self):
 		"""read conversion table from file and populate 2 dicts"""	
 		with open(self.conversion_table_path) as f:
 			self.ascii_2_ddr = json.load(f)
-		self.ddr_2_ascii = {value:key for key,value in ascii_2_ddr}
+		self.ddr_2_ascii = {value:key for key,value in self.ascii_2_ddr}
 
 	def write_delay(self,data, delay=0.5):
 		self.write_byte_delay(data.encode("ASCII"),delay)
@@ -48,24 +54,19 @@ class Erika:
 	def alarm(self,time):
 		self.connection.write(b"\xaa\xff")
 
-	def read():
-		pass
+	def read(self):
+		key_id = self.read()
+		return self.ddr_2_ascii[key_id.hex()]
 
 	def print_ascii(self,text):
 		for c in text:
-			key_id = dict[c]
+			key_id = self.ascii_2_ddr[c]
 			self.write_byte_delay(key_id)
 
-meine_erika = Erika("COM3")
-meine_erika.demo()
-meine_erika.alarm()
-# demo()
-# alarm(None)
+with Erika("COM3") as meine_erika:
+	meine_erika.demo()
+	meine_erika.alarm()
 
-# dict = {}
-# for char in ascii_lowercase:
-# 	dict[char] = connection.read()
-# 	print(char)
 
 
 
