@@ -34,7 +34,7 @@ class Erika:
         self.write_byte_delay(data.encode("ASCII"), delay)
 
     def write_byte_delay(self, data, delay=0.5):
-        self.connection.write(data)
+        self.connection.write(bytes.fromhex(data))
         time.sleep(delay)
 
     def print_smiley(self):
@@ -58,7 +58,7 @@ class Erika:
 
     def read(self):
         key_id = self.connection.read()
-        return self.ddr_2_ascii[key_id.hex()]
+        return self.ddr_2_ascii.get(key_id.hex().upper(),key_id.hex())
 
     def print_ascii(self, text):
         for c in text:
@@ -69,5 +69,7 @@ class Erika:
 with Erika("COM3") as meine_erika:
     # meine_erika.demo()
     # meine_erika.alarm(None)
-
-    meine_erika.print_ascii(input("Geben Sie Text ein:"))
+	meine_erika.print_ascii("\r")
+    #meine_erika.print_ascii(input("Geben Sie Text ein:"))
+	while True:
+	 	print(meine_erika.read())#, end='', flush=True)
