@@ -3,9 +3,9 @@
 Lets build a secret chat system using 2 of these.
 
 
-##Testing
+## Testing
 
-###Run unit tests
+### Run unit tests
 
 For now, call this in bash: 
 ```
@@ -13,7 +13,7 @@ For now, call this in bash:
 ```
 
 
-###Run integration tests
+### Run integration tests
 
 For now, call this in bash: 
 ```
