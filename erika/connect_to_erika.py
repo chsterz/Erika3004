@@ -65,21 +65,26 @@ class Erika:
 		for c in text:
 			key_id = self.ascii_2_ddr[c]
 			self.write_byte_delay(key_id)
-	
+
 	def print_raw(self, data):
 		self.connection.write(bytes.fromhex(data))
 
 	def move_up(self):
 		self.print_raw("76")
-	
+
 	def move_down(self):
 		self.print_raw("75")
-	
+
 	def move_left(self):
 		self.print_raw("74")
 
 	def move_right(self):
 		self.print_raw("73")
+
+	def crlf(self):
+		self.print_raw("78")
+		self.print_raw("9F")
+
 
 
 with Erika("COM3") as meine_erika:

@@ -18,8 +18,7 @@ ERIKA_PAGE_HEIGHT = 150
 
 
 # class ErikaMock(Erika):
-class ErikaMock():  # Erika):
-
+class ErikaMock():
     def __init__(self, width=ERIKA_PAGE_WIDTH, height=ERIKA_PAGE_HEIGHT):
         self.canvas = []
         for y in range(height):
@@ -74,6 +73,10 @@ class ErikaMock():  # Erika):
 
     def move_right(self):
         self.canvas_x += 1
+
+    def crlf(self):
+        self.canvas_x = 0
+        self.canvas_y += 1
 
     def test_debug_helper_print_canvas(self):
         """for debugging: print the current canvas to stdout"""

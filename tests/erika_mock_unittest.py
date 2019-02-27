@@ -27,7 +27,7 @@ class ErikaMockTest(unittest.TestCase):
             expected_line_joined = expected_array_of_joined_lines[line]
             expected_line = list(expected_line_joined)
             actual_line = my_erika.canvas[line]
-            self.assertTrue(expected_line == actual_line)
+            self.assertEqual(expected_line, actual_line)
 
 
 def main():
