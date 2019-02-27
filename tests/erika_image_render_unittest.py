@@ -1,6 +1,8 @@
 import unittest
+
 from erika.erika_image_renderer import *
 from tests.erika_mock import *
+from tests.erika_mock_unittest import assert_print_output
 
 
 class RendererTest(unittest.TestCase):
@@ -9,22 +11,13 @@ class RendererTest(unittest.TestCase):
         with ErikaMock(6, 6) as my_erika:
             rendering_strat = LineByLineErikaImageRenderingStrategy()
             renderer = ErikaImageRenderer(my_erika, rendering_strat)
-            renderer.renderAsciiArtFile('tests/test_resources/test_ascii_art_small.txt')
-            self.assertPrintOutput(my_erika,
-                                   ["abcdef", "ghijkl", "mnopqr", "stuvwx", "yzäöüß", "!?#'\"/"])
-
-
-    # TODO extract test util + DRY code
-    def assertPrintOutput(self, my_erika, expected_array_of_joined_lines):
-        for line in range(len(expected_array_of_joined_lines)):
-            expected_line_joined = expected_array_of_joined_lines[line]
-            expected_line = list(expected_line_joined)
-            actual_line = my_erika.canvas[line]
-            self.assertEqual(expected_line, actual_line)
+            renderer.render_ascii_art_file('tests/test_resources/test_ascii_art_small.txt')
+            assert_print_output(self, my_erika, ["abcdef", "ghijkl", "mnopqr", "stuvwx", "yzäöüß", "!?#'\"/"])
 
 
 def main():
     unittest.main()
+
 
 if __name__ == '__main__':
     main()

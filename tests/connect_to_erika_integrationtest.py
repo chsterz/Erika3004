@@ -1,6 +1,7 @@
 import unittest
 from erika.connect_to_erika import Erika
 
+# TODO make parameter dynamic
 COM_PORT = "COM3"
 
 
