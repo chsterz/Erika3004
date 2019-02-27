@@ -71,14 +71,18 @@ class Erika:
 
 	def move_up(self):
 		self.print_raw("76")
+		self.print_raw("76")
 
 	def move_down(self):
+		self.print_raw("75")
 		self.print_raw("75")
 
 	def move_left(self):
 		self.print_raw("74")
+		self.print_raw("74")
 
 	def move_right(self):
+		self.print_raw("73")
 		self.print_raw("73")
 
 	def crlf(self):
