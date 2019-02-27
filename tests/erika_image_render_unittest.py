@@ -9,7 +9,7 @@ class RendererTest(unittest.TestCase):
         with ErikaMock(6, 6) as my_erika:
             rendering_strat = LineByLineErikaImageRenderingStrategy()
             renderer = ErikaImageRenderer(my_erika, rendering_strat)
-            renderer.renderAsciiArtFile('/home/hoobert/Documents/machBar/repos/Erika3004/tests/test_resources/test_ascii_art_small.txt')
+            renderer.renderAsciiArtFile('tests/test_resources/test_ascii_art_small.txt')
             self.assertPrintOutput(my_erika,
                                    ["abcdef", "ghijkl", "mnopqr", "stuvwx", "yzäöüß", "!?#'\"/"])
 
