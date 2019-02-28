@@ -1,3 +1,10 @@
+# THIS REPOSITORY IS OLD
+
+You are looking at a fork of the software project that is no longer actively worked on. 
+
+**Instead, please have a look at [this repository](https://github.com/Chaostreff-Potsdam/erika3004) where 
+we moved the sources instead.** 
+
 # Erika3004
 
 Lets build a secret chat system using 2 of these.
